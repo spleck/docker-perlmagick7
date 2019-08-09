@@ -13,7 +13,7 @@ RUN true && \
 		ghostscript gsfonts fonts-dejavu libzstd-dev libfftw3-dev libpango1.0-dev libraw-dev \
 		libraw1394-dev libpng-dev libgif-dev libjpeg-dev libtiff5-dev -y && \
 	find /usr/local/lib/perl5 -name "libperl.so" -exec ln -s {} /usr/local/lib/libperl.so \; && \
-	git clone https://github.com/ImageMagick/ImageMagick.git /ImageMagick --branch 7.0.8-56 && \
+	git clone https://github.com/ImageMagick/ImageMagick.git /ImageMagick --branch 7.0.8-59 && \
 	cd /ImageMagick && ./configure --with-perl && make && make install && rm -rf /ImageMagick && \
 	rm -rf /var/lib/apt/lists/*
 
