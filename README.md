@@ -1,6 +1,6 @@
 # docker-perlmagick7
 
-Docker image based on current perl 5.30.1 with ImageMagick-7.0.9-22 and Image::Magick ready to go!
+Docker image based on current perl 5.30.x with ImageMagick-7 and Image::Magick ready to go!
 
 ----
 
