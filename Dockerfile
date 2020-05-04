@@ -1,20 +1,19 @@
 #
 # perlmagick7
 #
-FROM perl:5.30.2
+FROM perl:5.30.2-slim
 MAINTAINER Kevin Smith "kevin.smith@ingramcontent.com"
 
 # update system, remove imagemagick 6 files, build imagemagick 7, clean up
 RUN true && \
 	apt-get update && apt-get upgrade -y && \
-	apt-get remove --autoremove --purge -y imagemagick-6-common libmagickcore-6.q16-3  libmagickwand-6-headers libmagickwand-6.q16-dev libmagickwand-6.q1 && \
-	apt-get install \
+	apt-get install libstdc++-8-dev curl gnupg \
 		libdjvulibre-dev libgvc6 liblqr-1-0-dev libltdl-dev libopenexr-dev libopenjp2-7-dev libwmf-dev \
 		ghostscript gsfonts fonts-dejavu libzstd-dev libfftw3-dev libpango1.0-dev libraw-dev \
-		libraw1394-dev libpng-dev libgif-dev libjpeg-dev libtiff5-dev -y && \
+		libraw1394-dev libpng-dev libgif-dev libjpeg-dev libtiff5-dev git -y && \
 	find /usr/local/lib/perl5 -name "libperl.so" -exec ln -s {} /usr/local/lib/libperl.so \; && \
-	git clone https://github.com/ImageMagick/ImageMagick.git /ImageMagick --branch 7.0.10-10 && \
-	cd /ImageMagick && ./configure --with-perl && make && make install && rm -rf /ImageMagick && \
+	git clone https://github.com/ImageMagick/ImageMagick.git /opt/ImageMagick --branch 7.0.10-10 && \
+	cd /opt/ImageMagick && ./configure --with-perl && make && make install && cd / && rm -rf /opt/ImageMagick && \
 	rm -rf /var/lib/apt/lists/*
 
 # secure perl module installs
