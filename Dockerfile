@@ -2,7 +2,7 @@
 # perlmagick7
 #
 FROM perl:5.30.2-slim
-MAINTAINER Kevin Smith "kevin.smith@ingramcontent.com"
+MAINTAINER Kevin Smith "kevin@spleck.pl"
 
 # update system, remove imagemagick 6 files, build imagemagick 7, clean up
 RUN true && \
@@ -12,7 +12,7 @@ RUN true && \
 		ghostscript gsfonts fonts-dejavu libzstd-dev libfftw3-dev libpango1.0-dev libraw-dev \
 		libraw1394-dev libpng-dev libgif-dev libjpeg-dev libtiff5-dev git -y && \
 	find /usr/local/lib/perl5 -name "libperl.so" -exec ln -s {} /usr/local/lib/libperl.so \; && \
-	git clone https://github.com/ImageMagick/ImageMagick.git /opt/ImageMagick --branch 7.0.10-10 && \
+	git clone https://github.com/ImageMagick/ImageMagick.git /opt/ImageMagick --branch 7.0.10-16 && \
 	cd /opt/ImageMagick && ./configure --with-perl && make && make install && cd / && rm -rf /opt/ImageMagick && \
 	rm -rf /var/lib/apt/lists/*
 
