@@ -1,10 +1,10 @@
 #
 # perlmagick7
 #
-FROM perl:5.30.2-slim
+FROM perl:5.30.3-slim
 MAINTAINER Kevin Smith "kevin@spleck.pl"
 
-# update system, remove imagemagick 6 files, build imagemagick 7, clean up
+# update system, add deps, build imagemagick 7, clean up
 RUN true && \
 	apt-get update && apt-get upgrade -y && \
 	apt-get install libstdc++-8-dev curl gnupg \
@@ -21,4 +21,4 @@ ENV PERL_CPANM_OPT --verbose --mirror https://cpan.metacpan.org --mirror-only
 RUN cpanm Digest::SHA Module::Signature && rm -rf ~/.cpanm
 ENV PERL_CPANM_OPT $PERL_CPANM_OPT --verify
 
-CMD ["perl5.30.2","-de0"]
+CMD ["perl5.30.3","-de0"]
