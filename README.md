@@ -6,4 +6,4 @@ Docker image based on current perl 5.30 with ImageMagick-7 and Image::Magick rea
 
 ImageMagick built with Q16 HDRI with BZLIB, DJVU, FFTW, FontConfig, FreeType, JBIG, JPEG, LCMS, LAR, LZMA, OpenEXR, OpenJP2, Pango, Perl, PNG, RAW, TIFF, WEBP, WMF, X11, XML, ZLIB and ZSTD
 
-Current: perl-5.30.3, ImageMagick-7.0.10-16
+Current: perl-5.30.3, ImageMagick-7.0.10-17
