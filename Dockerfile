@@ -13,8 +13,8 @@ RUN true && \
 		libraw1394-dev libpng-dev libgif-dev libjpeg-dev libtiff5-dev git -y && \
 	find /usr/local/lib/perl5 -name "libperl.so" -exec ln -s {} /usr/local/lib/libperl.so \; && \
 	git clone https://github.com/ImageMagick/ImageMagick.git /opt/ImageMagick --branch 7.1.0-47 && \
-	cd /opt/ImageMagick && ./configure --with-perl && make && make install && cd / && rm -rf /opt/ImageMagick && \
-	rm -rf /var/lib/apt/lists/*
+	cd /opt/ImageMagick && ./configure --with-perl && make && make install && ldconfig /usr/local/lib && \
+	cd / && rm -rf /opt/ImageMagick && rm -rf /var/lib/apt/lists/*
 
 # secure perl module installs
 ENV PERL_CPANM_OPT --verbose --mirror https://cpan.metacpan.org --mirror-only
